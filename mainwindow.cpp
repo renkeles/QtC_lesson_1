@@ -109,6 +109,7 @@ QString finderSide(QString a, QString b, QString angle, QRadioButton *btn)
     }else
         {
             resultQ = "Неверный угол [0...180]";
+            if(btn->isChecked()) resultQ = "Неверный угол [0...3.1415]";
             return resultQ;
         }
     return resultQ;
