@@ -82,7 +82,7 @@ void MainWindow::on_pushButton_result_clicked()
 }
 
 
-QString finderSide(QString a, QString b, QString angle)
+QString finderSide(QString a, QString b, QString angle, QRadioButton *btn)
 {
     QString resultQ = "checker";
 
@@ -92,22 +92,26 @@ QString finderSide(QString a, QString b, QString angle)
     double bD = b.toDouble(&ok);
     double angleD = angle.toDouble(&ok);
 
-
-    if(angleD >= 0 & angleD <= 180)
+    if(btn->isChecked())
     {
-        double cosAngle = qCos(angleD * M_PI / 180);
-
-        double result = qSqrt(qPow(aD,2) + qPow(bD,2) - 2 * aD * bD * cosAngle);
-
-        resultQ = QString::number(result);
-
-        return resultQ;
-    }else
-    {
-        resultQ = "Неверный угол [0...180]";
-        return resultQ;
+        angleD = qRadiansToDegrees(angleD);
     }
 
+    if(angleD >= 0 & angleD <= 180)
+        {
+            double cosAngle = qCos(angleD * M_PI / 180);
+
+            double result = qSqrt(qPow(aD,2) + qPow(bD,2) - 2 * aD * bD * cosAngle);
+
+            resultQ = QString::number(result);
+
+            return resultQ;
+    }else
+        {
+            resultQ = "Неверный угол [0...180]";
+            return resultQ;
+        }
+    return resultQ;
 
 }
 
@@ -117,7 +121,9 @@ void MainWindow::on_pushButton_result_c_size_clicked()
     QString b = ui->input_b_side->text();
     QString angle = ui->input_angle->text();
 
-    QString resultQ = finderSide(a, b, angle);
+    QRadioButton *btn = ui->radioButton_check;
+
+    QString resultQ = finderSide(a, b, angle, btn);
 
     ui->output_result_c_side->setText(resultQ);
 
@@ -126,12 +132,28 @@ void MainWindow::on_pushButton_result_c_size_clicked()
 
 void MainWindow::on_pushButton_adder_clicked()
 {
+    QString input_text = ui->input_textEdit->toPlainText();
+    QString output_text = ui->output_textEdit->toPlainText();
+    if(output_text != "")
+    {
+        output_text += "\n";
+    }
 
+    output_text += input_text;
+
+    ui->output_textEdit->setText(output_text);
 }
 
 
 void MainWindow::on_pushButton_replace_clicked()
 {
+    QString input_text = ui->input_textEdit->toPlainText();
+    ui->output_textEdit->setText(input_text);
+}
 
+
+void MainWindow::on_pushButton_add_html_clicked()
+{
+    ui->output_textEdit->setHtml("<font color='red'>Hello</font>");
 }
 

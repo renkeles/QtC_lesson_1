@@ -24,6 +24,8 @@ private slots:
 
     void on_pushButton_replace_clicked();
 
+    void on_pushButton_add_html_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

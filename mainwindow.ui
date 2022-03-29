@@ -299,6 +299,32 @@
      <string>Заменить</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_add_html">
+    <property name="geometry">
+     <rect>
+      <x>199</x>
+      <y>320</y>
+      <width>80</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>HTML</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton_check">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>120</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Rad</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
