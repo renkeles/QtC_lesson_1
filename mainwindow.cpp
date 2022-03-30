@@ -31,8 +31,7 @@ QString finderRoots(QString a, QString b, QString c)
 
     if(fabs(aD) < eps)//Равен 0
     {  
-        result = cD / bD;
-        result = -result;
+        result = -(cD / bD);
         resultQ = "x = ";
         resultQ += QString::number(result);
         return resultQ;
