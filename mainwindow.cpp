@@ -30,20 +30,12 @@ QString finderRoots(QString a, QString b, QString c)
     QString resultQ = "checker";
 
     if(fabs(aD) < eps)//Равен 0
-    {
-        if(bD > 0)
-        {
-            result = -cD;
-            resultQ = "x = ";
-            resultQ += QString::number(result);
-            return resultQ;
-        }else
-        {
-            result = cD;
-            resultQ = "x = ";
-            resultQ += QString::number(result);
-            return resultQ;
-        }
+    {  
+        result = cD / bD;
+        result = -result;
+        resultQ = "x = ";
+        resultQ += QString::number(result);
+        return resultQ;
     }
 
     if(fabs(Disk) < eps)//Равен 0
